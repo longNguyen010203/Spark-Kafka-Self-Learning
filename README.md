@@ -3,8 +3,8 @@ A third-year student is self-studying Apache Kafka as part of their data enginee
 
 ## 🔦 Study roadmap
 
-
 ## 📦 Technologies
  - `Docker`
+ - `PostgreSQL`
  - `Apache kafka`
  - `Zookeeper`
