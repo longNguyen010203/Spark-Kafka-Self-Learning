@@ -1,3 +1,6 @@
 .spark-kafka-venv/
 
 Apache-Kafka/logs
+Apache-Kafka/data/indexProcessed.csv/
+
+.env
