@@ -9,3 +9,6 @@ down:
 
 restart:
 	make down && make up
+
+to_spark_master:
+	docker exec -it spark-master /bin/bash
