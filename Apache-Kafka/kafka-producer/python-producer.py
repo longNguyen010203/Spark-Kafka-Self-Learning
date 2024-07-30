@@ -11,12 +11,14 @@ from kafka import KafkaProducer
 
 
 
+KAFKA_NODES = "kafka:9092"
+MY_TOPIC = "sentence"
 
 def generate_data() -> None:
     
     fakeDataTestingObject = Faker()
     # Connect kafka and create kafka producer object
-    producer = KafkaProducer(bootstrap_servers=["kafka:9092"], 
+    producer = KafkaProducer(bootstrap_servers=[KAFKA_NODES], 
         value_serializer=lambda m: json.dumps(m).encode("utf-8")
     )
     my_FakeData = {"sentence": fakeDataTestingObject.sentence()}

@@ -4,3 +4,9 @@ Apache-Kafka/logs
 Apache-Kafka/data/indexProcessed.csv/
 
 .env
+
+minio
+
+data-spark
+
+data
