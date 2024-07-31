@@ -13,5 +13,5 @@ COPY wait-for-it.sh wait-for-it.sh
 ADD python-producer.py .
 
 CMD ./wait-for-it.sh -s -t 30 $ZOOKEEPER_SERVER \
-    -- ./wait-for-it.sh -s -t 30 $KAFKA_SERVER \
+ -- ./wait-for-it.sh -s -t 30 $KAFKA_SERVER \
     -- python -u python-producer.py

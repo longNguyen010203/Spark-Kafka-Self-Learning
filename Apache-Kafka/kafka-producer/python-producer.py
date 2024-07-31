@@ -14,7 +14,7 @@ from kafka import KafkaProducer
 KAFKA_NODES = "kafka:9092"
 MY_TOPIC = "sentence"
 
-def generate_data() -> None:
+def kafka_generate_data() -> None:
     
     fakeDataTestingObject = Faker()
     # Connect kafka and create kafka producer object
@@ -23,7 +23,7 @@ def generate_data() -> None:
     )
     my_FakeData = {"sentence": fakeDataTestingObject.sentence()}
     logging.info(f"Data fake using in proj: {my_FakeData}")
-    producer.send(topic="sentence", value=my_FakeData)
+    producer.send(topic=MY_TOPIC, value=my_FakeData)
     producer.flush()
     
 
@@ -36,4 +36,4 @@ def generate_data() -> None:
 
 if __name__ == '__main__':
     time.sleep(5)
-    generate_data()
+    kafka_generate_data()
