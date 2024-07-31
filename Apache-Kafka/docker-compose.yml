@@ -34,14 +34,15 @@ services:
   kafka-producer:
     build: 
       context: ./kafka-producer
+      dockerfile: Dockerfile
     container_name: kafka-producer
     environment:
       KAFKA_SERVER: kafka:9092
       ZOOKEEPER_SERVER: zookeeper:32181
       PRODUCER_INTERVAL: 100
     depends_on:
-      - zookeeper
       - kafka
+      - postgres
       - kafka-consumer
     networks:
       - bridge
@@ -49,6 +50,7 @@ services:
   kafka-consumer:
     build: 
       context: ./kafka-consumer
+      dockerfile: Dockerfile
     container_name: kafka-consumer
     environment:
       KAFKA_SERVER: kafka:9092
@@ -63,6 +65,7 @@ services:
   postgres:
     build: 
       context: ./postgres
+      dockerfile: Dockerfile
     container_name: postgres
     restart: always
     environment:
