@@ -11,11 +11,10 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 
-
 nltk.download("vader_lexicon")
 analyzer = SentimentIntensityAnalyzer()
 
-# Connect to postgres
+# Connect to PostgreSQL
 conn = psycopg2.connect(
     dbname=os.getenv("POSTGRES_DB"), 
     user=os.getenv("POSTGRES_USERNAME"),
@@ -26,7 +25,10 @@ conn = psycopg2.connect(
 cursor = conn.cursor()
 
 # Connect kafka and create kafka consumer object
-consumer = KafkaConsumer(topic="sentence", bootstrap_servers=['kafka:9092'],
+KAFKA_NODES = "kafka:9092"
+MY_TOPIC = "sentence"
+
+consumer = KafkaConsumer(topic=MY_TOPIC, bootstrap_servers=[KAFKA_NODES],
     value_deserializer=lambda m: json.loads(m.decode("utf-8")))
 
 # Consumer messages from the topic
@@ -34,7 +36,7 @@ for message in consumer:
     data = message.value 
     logging.info(f"Data: {data}")
     scores = analyzer.polarity_scores(data["sentence"])
-    logging.info(scores["compound"])
+    logging.info(f"Scores: {scores["compound"]}")
     
     # Insert data into PostgreSQL
     cursor.execute(
