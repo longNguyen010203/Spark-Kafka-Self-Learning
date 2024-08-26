@@ -10,7 +10,18 @@ A third-year student is self-studying Spark and Kafka as part of their data engi
 
 ## 🔦 Architecture
 
-### 1. Apache Kafka
+### 1. Apache Spark
+<img src="./images/Spark_architecture.png" style="width: 100%;">
+
+ - `SparkContext`
+ - `Driver Program`
+ - `Cluster Manager`
+ - `Worker Node`
+ - `Executor`
+ - `Cache`
+ - `Task`
+
+### 2. Apache Kafka
 <img src="./images/kafka_architecture.webp" style="width: 100%;">
 
  - `Producer`
@@ -21,14 +32,3 @@ A third-year student is self-studying Spark and Kafka as part of their data engi
  - `Partition`
  - `Offset`
  - `Consumer-group`
-
-### 2. Apache Spark
-<img src="./images/Spark_architecture.png" style="width: 100%;">
-
- - `SparkContext`
- - `Driver Program`
- - `Cluster Manager`
- - `Worker Node`
- - `Executor`
- - `Cache`
- - `Task`
