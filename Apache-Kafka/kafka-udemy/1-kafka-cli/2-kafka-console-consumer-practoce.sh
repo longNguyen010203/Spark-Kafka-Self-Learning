@@ -19,7 +19,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
                               --from-beginning
 
 
-kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
                           --topic second_topic \
                           --formatter kafka.tools.DefaultMessageFormatter \
                           --property print.timestamp=true \
