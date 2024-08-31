@@ -6,7 +6,11 @@
 ############################ 
 
 # create a topic with 3 partitions
-kafka-topics.sh --command-config playground.config --bootstrap-server cluster.playground.cdkt.io:9092 --topic third_topic --create --partitions 3
+kafka-topics.sh --command-config playground.config \
+                --bootstrap-server cluster.playground.cdkt.io:9092 \
+                --topic third_topic \
+                --create \
+                --partitions 3
 
 # start one consumer
 kafka-console-consumer.sh --consumer.config playground.config --bootstrap-server cluster.playground.cdkt.io:9092 --topic third_topic --group my-first-application
@@ -26,16 +30,28 @@ kafka-console-consumer.sh --consumer.config playground.config --bootstrap-server
 ############################
 
 # create a topic with 3 partitions
-kafka-topics.sh --bootstrap-server localhost:9092 --topic third_topic --create --partitions 3
+bin/kafka-topics.sh --bootstrap-server localhost:9092 \
+                --topic test_topic \
+                --create \
+                --partitions 3
 
 # start one consumer
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+                            --topic test_topic \
+                            --group my-first-application
 
 # start one producer and start producing
-kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic third_topic
+bin/kafka-console-producer.sh --bootstrap-server localhost:9092 \
+    --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner \
+    --topic test_topic
 
 # start another consumer part of the same group. See messages being spread
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
+kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+                            --topic third_topic \
+                            --group my-first-application
 
 # start another consumer part of a different group from beginning
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-second-application --from-beginning
+kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+                    --topic test_topic \
+                    --group my-second-application \
+                    --from-beginning
